@@ -27,6 +27,16 @@ After validating the key, the program prompts the user for plaintext input and p
 ```bash
 make substitution
 ./substitution NQXPOMAFTRHLZGECYJIUWSKDVB
+```
+
+## Note
+
+This program uses `get_string()` from `cs50.h` to get user input.
+To run it outside CS50.dev, make sure to:
+
+Install the CS50 library, or
+
+Replace `get_string()` with `fgets()` or `scanf()` as needed
 
 ## Personal Note
 
