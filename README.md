@@ -7,9 +7,9 @@ This repository contains my personal solutions and reflections for Harvard’s C
 Each folder represents a week of the course:
 
 - Week 0 – Scratch
-- Week 1 – C: Basics, conditions, loops
-- Week 2 – Arrays, strings, command-line
-- Week 3 – Algorithms and recursion
+- Week 1 – C
+- Week 2 – Arrays
+- Week 3 – Algorithms
 - Week 4+ – Coming soon...
 
 Each folder includes:
