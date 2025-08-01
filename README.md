@@ -1,48 +1,32 @@
 # CS50x – Introduction to Computer Science
 
-This repository contains my personal solutions and notes for [CS50x](https://cs50.harvard.edu/x/), Harvard University's introductory course in computer science.
+This repository contains my personal solutions and reflections for Harvard’s CS50x course.
 
-CS50x is part of my career transition into IT, cloud computing, and cybersecurity. It builds a solid foundation in computer science, covering fundamental programming concepts, algorithms, data structures, and web development.
+## Contents
 
-## Goals
+Each folder represents a week of the course:
 
-- Learn core programming concepts and algorithms
-- Improve logical thinking and problem-solving skills
-- Strengthen my technical base for future roles in cybersecurity and cloud
-- Practice and showcase my work using Git and GitHub
+- Week 0 – Scratch
+- Week 1 – C: Basics, conditions, loops
+- Week 2 – Arrays, strings, command-line
+- Week 3 – Algorithms and recursion
+- Week 4+ – Coming soon...
 
-## Repository Structure
+Each folder includes:
 
-Each week is organized in a separate folder. It contains problem sets, source code, and explanations of my approach.
+- Problem set solutions
+- A `README.md` with my personal notes and reflections
 
-## Course Progress
+## 🚧 In Progress
 
-| Week   | Topic                   | Status         |
-|--------|-------------------------|----------------|
-| Week 0 | Scratch                 | Completed      |
-| Week 1 | C – Basics              | Completed      |
-| Week 2 | C – Arrays & Algorithms| Completed      |
-| Week 3 | C – Sorting & Searching| Completed      |
-| Week 4 | C – Memory              | In Progress    |
-| Week 5 | Python                  | Upcoming       |
-| Week 6 | Python & Libraries      | Upcoming       |
-| Week 7 | SQL                     | Upcoming       |
-| Week 8+| Web, Flask, AI          | Upcoming       |
+- I started CS50 in June 2025 and I’m documenting my progress week by week.
 
-## Technologies and Tools
+## 🙋 About Me
 
-- Programming languages: C, Python, SQL, HTML
-- Tools: CS50 IDE ([cs50.dev](https://cs50.dev)), Git, GitHub
-- Topics: memory management, recursion, data structures, web development
+I'm preparing a career change into **systems, networking, cloud, and cybersecurity**.  
+CS50 is part of my technical foundation.
 
-## About Me
+## 🛑 Academic Honesty
 
-My name is Jérôme Henry.  
-I am transitioning into IT after working in logistics and technical environments.  
-This course is the first step in my training to become a cybersecurity and cloud technician.
-
-## Academic Honesty
-
-All work presented in this repository is my own.  
-This repository is meant for learning, documentation, and sharing knowledge.  
-Please do not copy these solutions for use in coursework or assessments, in accordance with [Harvard's academic policy](https://cs50.harvard.edu/x/honesty/).
+All work is my own.  
+Please do not copy if you are currently taking CS50.
