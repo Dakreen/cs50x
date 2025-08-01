@@ -17,16 +17,12 @@ Each folder includes:
 - Problem set solutions
 - A `README.md` with my personal notes and reflections
 
-## 🚧 In Progress
+## About Me
 
-- I started CS50 in June 2025 and I’m documenting my progress week by week.
-
-## 🙋 About Me
-
-I'm preparing a career change into **systems, networking, cloud, and cybersecurity**.  
+I'm preparing a career change to become a **cybersecurity technician**, with skills in systems, networking, cloud, and ethical hacking.  
 CS50 is part of my technical foundation.
 
-## 🛑 Academic Honesty
+## Academic Honesty
 
 All work is my own.  
 Please do not copy if you are currently taking CS50.
