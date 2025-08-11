@@ -2,33 +2,31 @@
 #include <stdio.h>
 
 // Function prototypes
-bool checksum(long number);
-int numberLength(long number);
+bool checksum(long number);       // Applies Luhn's Algorithm to validate card number
+int numberLength(long number);    // Returns number of digits in the card number
 
 int main(void)
 {
-    // Prompt user for a credit card number
+    // Prompt user for credit card number
     long number = get_long("Number: ");
     long copyNumber = number;
 
-    // Count number of digits
+    // Get number of digits in the card number
     int numDigits = numberLength(number);
 
-    // Check if length is potentially valid for major card types
+    // Valid card numbers are 13, 15, or 16 digits long
     if (numDigits == 13 || numDigits == 15 || numDigits == 16)
     {
-        // Prepare to extract leading digits
-        long oneDigit = copyNumber;
-        long twoDigits = copyNumber;
-        long checksumNumber = copyNumber;
+        // Variables to extract starting digits
+        long oneDigit = copyNumber;   // First digit
+        long twoDigits = copyNumber;  // First two digits
+        long checksumNumber = copyNumber; // For Luhn's algorithm
 
-        // Calculate how many digits to remove
-        int oneDigitLength = numDigits - 1;
-        int twoDigitsLength = numDigits - 2;
-
+        int oneDigitLength = numDigits - 1;   // Position of first digit
+        int twoDigitsLength = numDigits - 2;  // Position of first two digits
         int digitsCounter = 0;
 
-        // Get the first digit (for VISA check)
+        // Extract the first digit
         do
         {
             oneDigit /= 10;
@@ -36,9 +34,8 @@ int main(void)
         }
         while (digitsCounter < oneDigitLength);
 
+        // Reset counter and extract the first two digits
         digitsCounter = 0;
-
-        // Get the first two digits (for AMEX/MASTERCARD check)
         do
         {
             twoDigits /= 10;
@@ -46,7 +43,9 @@ int main(void)
         }
         while (digitsCounter < twoDigitsLength);
 
-        // Check for AMEX (15 digits, starts with 34 or 37)
+        // === Card Type Checks ===
+
+        // American Express: 15 digits, starts with 34 or 37
         if (numDigits == 15)
         {
             if (twoDigits == 34 || twoDigits == 37)
@@ -65,11 +64,12 @@ int main(void)
                 printf("INVALID\n");
             }
         }
-        // Check for MASTERCARD or VISA (16 digits)
+        // 16-digit cards can be MasterCard or Visa
         else if (numDigits == 16)
         {
-            // MASTERCARD: starts with 51–55
-            if (twoDigits >= 51 && twoDigits <= 55)
+            // MasterCard: starts with 51–55
+            if (twoDigits == 51 || twoDigits == 52 || twoDigits == 53 || twoDigits == 54 ||
+                twoDigits == 55)
             {
                 if (checksum(copyNumber))
                 {
@@ -80,7 +80,7 @@ int main(void)
                     printf("INVALID\n");
                 }
             }
-            // VISA: starts with 4
+            // Visa: starts with 4
             else if (oneDigit == 4)
             {
                 if (checksum(copyNumber))
@@ -97,7 +97,7 @@ int main(void)
                 printf("INVALID\n");
             }
         }
-        // Check for 13-digit VISA
+        // 13-digit Visa check
         else if (numDigits == 13)
         {
             if (oneDigit == 4)
@@ -119,46 +119,50 @@ int main(void)
     }
     else
     {
-        // Reject if the number length isn't valid
+        // Any other length is invalid
         printf("INVALID\n");
     }
 }
 
-// Implements Luhn’s algorithm to verify checksum
+// === Luhn's Algorithm Implementation ===
+// Checks if a card number is valid by summing digits according to Luhn's rules:
+// 1. Starting from the second-to-last digit, double every other digit.
+// 2. If doubling gives a two-digit number, add the digits together.
+// 3. Sum all these doubled results with the sum of digits not doubled.
+// 4. If total sum % 10 == 0 → valid card.
 bool checksum(long number)
 {
     int lastDigit;
-    int sumPair = 0;
-    int sumUnpair = 0;
+    int sumPair = 0;     // Sum of doubled digits
+    int sumUnpair = 0;   // Sum of untouched digits
     int totalSum = 0;
     int left;
-    int counter = 1;
+    int counter = 1;     // Position counter from right to left
 
     while (number > 0)
     {
         left = counter % 2;
 
-        // Every second digit from the right (even positions)
         if (left == 0)
         {
+            // Double every second digit from the right
             int doubleDigit = (number % 10) * 2;
 
-            // If result is two-digit, split and sum them
+            // If doubling creates a two-digit number, add both digits separately
             if (numberLength(doubleDigit) > 1)
             {
-                int second = doubleDigit % 10;
                 int first = doubleDigit / 10;
-                int extractSum = first + second;
-                sumPair += extractSum;
+                int second = doubleDigit % 10;
+                sumPair += first + second;
             }
             else
             {
                 sumPair += doubleDigit;
             }
         }
-        // Odd positions (just add the digit)
         else
         {
+            // Add digits not doubled
             int digit = number % 10;
             sumUnpair += digit;
         }
@@ -170,11 +174,10 @@ bool checksum(long number)
     totalSum = sumPair + sumUnpair;
     lastDigit = totalSum % 10;
 
-    // If total ends in 0, it's valid
-    return lastDigit == 0;
+    return (lastDigit == 0);
 }
 
-// Helper to count number of digits in the card number
+// Returns the number of digits in a number
 int numberLength(long number)
 {
     int length = 0;
