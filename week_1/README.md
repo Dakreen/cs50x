@@ -38,6 +38,12 @@ By checking both the checksum and the card’s prefix rules, we can:
 
 ---
 
+## 💡 Why This Project Is Interesting
+- Combines **input validation**, **mathematical algorithms**, and **control flow**.  
+- Demonstrates the ability to work with **large numbers** and implement a **real-world checksum** algorithm from scratch.
+
+---
+
 ## Note
 This project was developed as part of **CS50x** while learning the C programming language.  
 It uses the **CS50 Library** (`cs50.h`) for simplified input handling via `get_long()`.  

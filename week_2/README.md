@@ -1,52 +1,62 @@
-# CS50x – Week 2: Substitution
+# Substitution Cipher
 
-## Goal
+**Author:** Dakreen  
+**Date:** July 2025
+**Course:** CS50x – Problem Set 2
 
-Create a program that encrypts plaintext using a **substitution cipher**, where each letter in the alphabet is replaced by a corresponding letter in a user-provided key.
+---
 
-## Description
+## Overview
+This program implements a **Substitution Cipher**, where each letter in the plaintext is replaced with a corresponding letter from a user-provided key.  
+The key must contain all 26 letters of the English alphabet exactly once (case-insensitive) and can be provided in any order.
 
-This program takes a single command-line argument: a **26-character key** containing each letter of the alphabet exactly once.  
-The key is case-insensitive but must be valid (alphabetic, no duplicates, correct length).
+---
 
-After validating the key, the program prompts the user for plaintext input and produces a ciphertext where each letter is substituted according to the key. The case of each letter is preserved, and non-alphabetical characters remain unchanged.
+## Problem Solved
+In classical cryptography, substitution ciphers provide a simple way to encrypt messages by substituting letters according to a fixed mapping.  
+This program:
+- Validates the encryption key before use.
+- Preserves the case of each letter in the plaintext.
+- Leaves non-alphabetic characters unchanged.
 
-## Key Features
+---
 
-- Validates key (26 letters, all alphabetic, no duplicates)
-- Preserves case (uppercase/lowercase)
-- Ignores non-alphabetic characters
-- Uses `cs50.h`, `ctype.h`, `string.h`
+## How It Works
+1. **User provides a key** as a command-line argument.
+2. **Key validation** checks:
+   - Length of exactly 26 characters.
+   - All characters are alphabetic.
+   - No duplicate letters (case-insensitive).
+3. **Plaintext prompt** using the CS50 library’s `get_string()`.
+4. **Encryption loop**:
+   - For each alphabetic character, find its position in the alphabet.
+   - Replace it with the letter at the same position in the key.
+   - Preserve original case.
+   - Copy non-alphabetic characters as-is.
+5. Output the **ciphertext**.
 
-## Files
+---
 
-- `substitution.c`: Main source code
+## Key Functions
+- `key_checker()` → Validates the encryption key for length, alphabetic characters, and uniqueness.
+- `cipher()` → Applies the substitution cipher to the provided plaintext.
 
-## How to Compile and Run
+---
 
-```bash
-make substitution
-./substitution NQXPOMAFTRHLZGECYJIUWSKDVB
-```
+## Why This Project Is Interesting
+- Reinforces string manipulation and validation logic.
+- Demonstrates **character property handling** via `ctype.h` functions (`isalpha`, `toupper`, `tolower`).
+- Introduces mapping between two alphabets using indexing.
+
+---
+
+## References
+- [Substitution cipher – Wikipedia](https://en.wikipedia.org/wiki/Substitution_cipher)  
+- [CS50x Problem Set 2 Specification](https://cs50.harvard.edu/x/)
+
+---
 
 ## Note
-
-This program uses `get_string()` from `cs50.h` to get user input.
-To run it outside CS50.dev, make sure to:
-
-Install the CS50 library, or
-
-Replace `get_string()` with `fgets()` or `scanf()` as needed
-
-## Personal Note
-
-> I really enjoyed this problem because it involved combining **string validation**, **loop logic**, and **character manipulation**.  
-> Writing the `key_checker()` function taught me how to catch invalid inputs and enforce constraints.  
-> 
-> 🧪 This was also my **first time working seriously with command-line arguments** in C. It helped me understand how programs can be customized and controlled directly from the terminal.
->  
-> 💻 I also used the **debugger in VS Code again**, and it helped me track how characters were being mapped during encryption.  
-> This kind of challenge is exactly why I like learning C — it's low-level but very satisfying when it works.
-
-
-
+This project was developed as part of **CS50x** while learning C.  
+It uses the **CS50 Library** (`cs50.h`) for simplified input handling via `get_string()`.  
+For production-grade code, you could replace this with standard C functions like `fgets()` and optimize encryption by **precomputing a mapping array** to achieve `O(n)` encryption.
