@@ -1,57 +1,72 @@
-# CS50x – Week 3: Tideman
+# Tideman Voting Algorithm
 
-## Goal
+**Author:** Dakreen  
+**Date:** July 2025  
+**Course:** CS50x – Problem Set 3
 
-Implement a ranked-pairs voting system (the **Tideman method**) that determines the winner of an election using voters' ranked preferences.
+---
 
-## Description
+## Overview
+This program implements the **Tideman (Ranked Pairs)** voting algorithm, a ranked-choice voting method that determines the winner without creating contradictions in voter preferences.  
+It ensures that the most preferred candidate wins while avoiding cycles in the directed preference graph.
 
-In this program, voters rank candidates in order of preference. The program:
+---
 
-1. Collects all votes and updates a **preference matrix**
-2. Identifies all **winning pairs** of candidates
-3. Sorts the pairs by **strength of victory**
-4. Locks the pairs into a **directed graph**, ensuring no **cycles**
-5. Determines the winner as the **source of the graph** (the candidate with no arrows pointing at them)
+## Problem Solved
+Traditional plurality voting can lead to winners who are not the most broadly supported candidate.  
+Tideman’s method:
+- Records voters’ ranked preferences.
+- Compares every pair of candidates.
+- Orders these pairs by the **strength of victory**.
+- Locks them into a directed graph, skipping any that would create cycles.
+- Declares the candidate with no incoming edges as the winner.
 
-## Concepts Used
+---
 
-- **2D arrays** to store preferences and graph edges
-- **Structs** to represent candidate pairs
-- **Sorting algorithms** (custom **merge sort**)
-- **Graph theory** (cycle detection using **recursion**)
-- **Command-line arguments**
-- **Input validation**
+## How It Works
+1. **Initialize** preference and locked matrices.
+2. **Collect votes**:
+   - Validate each vote with `vote()`.
+   - Record preferences with `record_preferences()`.
+3. **Add pairs**:
+   - Store all winning/losing candidate pairs using `add_pairs()`.
+4. **Sort pairs**:
+   - Sort in descending order of victory strength using `merge_sort()`.
+5. **Lock pairs**:
+   - Add edges to the graph with `lock_pairs()`, avoiding cycles via `check_cycle()`.
+6. **Print winner**:
+   - Candidate with no incoming edges is declared winner via `print_winner()`.
 
-## Files
+---
 
-- `tideman.c` — main program source code
+## Key Functions
+- `vote()` → Validates and records candidate ranks for a voter.
+- `record_preferences()` → Updates global preferences matrix.
+- `add_pairs()` → Identifies all winning pairs from preferences.
+- `sort_pairs()` → Sorts pairs by strength of victory.
+- `lock_pairs()` → Locks in pairs without forming cycles.
+- `check_cycle()` → Recursive cycle detection.
+- `print_winner()` → Finds the graph’s source (winner).
 
-## How to Compile and Run
+---
 
-```bash
-make tideman
-./tideman [candidate1] [candidate2] ... [candidateN]
-```
+## Why This Project Is Interesting
+- Involves **graph theory** concepts such as directed acyclic graphs (DAGs) and cycle detection.
+- Uses **sorting algorithms** (merge sort) for performance.
+- Applies recursion to prevent graph cycles.
+- Demonstrates ability to translate a real-world voting method into C code.
 
-Then follow the prompts to enter voter preferences.
+---
 
-## Notes
+## References
+- Tideman, N. (1987). *Independence of clones as a criterion for voting rules*.  
+- [CS50x Problem Set 3 Specification](https://cs50.harvard.edu/x/)  
 
-This program uses `get_int()` and `get_string()` from the `cs50.`h library.
-To run it outside of CS50.dev, you may need to:
+---
 
-Install the CS50 library, or
-
-Replace input functions with standard C equivalents `(scanf, fgets, etc.)`
-
-## Personal Note
-
-This was by far the hardest problem I've encountered in CS50 so far.
-Implementing the recursive cycle detection logic and the merge sort algorithm took me a lot of time and debugging.
-
-> The graph logic, especially avoiding cycles when locking in candidate pairs, really tested my understanding of how recursive functions work.
->
-> I learned a lot about sorting algorithms, graph theory, and how to think recursively — even though it was frustrating at times.
->
-> As always, I used the VS Code debugger to visualize values and recursive calls — it was a lifesaver for understanding why certain pairs created cycles.
+## Note
+This project was developed as part of **CS50x** while learning C.  
+It uses the **CS50 Library** (`cs50.h`) for input handling (`get_int()`, `get_string()`).  
+In production code:
+- You would replace CS50 input functions with standard C equivalents.
+- You could optimize sorting or use adjacency lists for graph representation.

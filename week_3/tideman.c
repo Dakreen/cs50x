@@ -1,29 +1,42 @@
-#include <cs50.h>
-#include <stdio.h>
-#include <string.h>
+#include <cs50.h>     // For get_int(), get_string(), and string type
+#include <stdio.h>    // For printf()
+#include <string.h>   // For strcmp()
+
+// ===============================================================
+// CS50x – Problem Set 3: Tideman Voting Algorithm
+//
+// Implements the Tideman (Ranked Pairs) method of ranked-choice voting.
+// Given voter rankings, it:
+// 1. Records preferences between every pair of candidates.
+// 2. Creates ordered pairs where one candidate is preferred over another.
+// 3. Sorts these pairs by strength of victory.
+// 4. Locks them into a graph without creating cycles.
+// 5. Declares the winner as the candidate with no incoming edges.
+// ===============================================================
 
 // Max number of candidates
 #define MAX 9
 
-// preferences[i][j] is the number of voters who prefer candidate i over candidate j
+// preferences[i][j] = number of voters who prefer candidate i over j
 int preferences[MAX][MAX];
 
-// locked[i][j] means candidate i is locked in over candidate j (true if i beats j in final graph)
+// locked[i][j] = true means candidate i is locked in over candidate j
 bool locked[MAX][MAX];
 
-// Struct representing a winning pair
+// Struct for a winning/losing pair
 typedef struct
 {
     int winner;
     int loser;
 } pair;
 
-// Candidate names and pair storage
+// Candidates and pairs arrays
 string candidates[MAX];
-pair pairs[MAX * (MAX - 1) / 2]; // Max number of pairs in a complete graph
+pair pairs[MAX * (MAX - 1) / 2];
 
-int pair_count;
-int candidate_count;
+// Global counts
+int pair_count;         // Number of pairs stored
+int candidate_count;    // Number of candidates
 
 // Function prototypes
 bool vote(int rank, string name, int ranks[]);
@@ -38,14 +51,14 @@ bool check_cycle(int winner, int loser);
 
 int main(int argc, string argv[])
 {
-    // Check for valid usage: at least one candidate must be provided
+    // Validate command-line arguments
     if (argc < 2)
     {
         printf("Usage: tideman [candidate ...]\n");
         return 1;
     }
 
-    // Initialize candidates
+    // Populate candidate array from argv[]
     candidate_count = argc - 1;
     if (candidate_count > MAX)
     {
@@ -57,7 +70,7 @@ int main(int argc, string argv[])
         candidates[i] = argv[i + 1];
     }
 
-    // Initialize locked graph to false (no pairs locked yet)
+    // Initialize locked graph to false (no locked-in pairs yet)
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
@@ -67,65 +80,75 @@ int main(int argc, string argv[])
     }
 
     pair_count = 0;
-
-    // Get voter count
     int voter_count = get_int("Number of voters: ");
 
-    // For each voter
+    // Gather votes from each voter
     for (int i = 0; i < voter_count; i++)
     {
-        int ranks[candidate_count]; // ranks[i] = candidate index ranked at position i
+        int ranks[candidate_count]; // ranks[i] = candidate index of voter’s ith preference
 
-        // Query each rank
+        // Query voter for their ranked preferences
         for (int j = 0; j < candidate_count; j++)
         {
             string name = get_string("Rank %i: ", j + 1);
 
-            if (!vote(j, name, ranks)) // validate vote
+            if (!vote(j, name, ranks))
             {
                 printf("Invalid vote.\n");
                 return 3;
             }
         }
 
-        // Update global preferences matrix
+        // Record this voter's preferences into global matrix
         record_preferences(ranks);
-
         printf("\n");
     }
 
-    // Process election
-    add_pairs();     // Identify all winning pairs
-    sort_pairs();    // Sort pairs by strength of victory
-    lock_pairs();    // Lock in pairs, avoiding cycles
-    print_winner();  // Output the winner
-
+    add_pairs();
+    sort_pairs();
+    lock_pairs();
+    print_winner();
     return 0;
 }
 
-// Process a single voter's vote
+/*
+ * vote:
+ * Updates the ranks[] array for the current voter.
+ * rank   → position in the voter's ranking (0 = first choice)
+ * name   → candidate name entered by the voter
+ * ranks[]→ array storing candidate indices in ranked order
+ * Returns true if the vote is valid, false otherwise.
+ */
 bool vote(int rank, string name, int ranks[])
 {
     for (int i = 0; i < candidate_count; i++)
     {
+        // If entered name matches a candidate
         if (strcmp(name, candidates[i]) == 0)
         {
-            // Prevent duplicate rankings
-            for (int j = 0; j < rank; j++)
+            // Prevent the same candidate being ranked twice
+            if (rank > 0)
             {
-                if (i == ranks[j])
+                for (int j = 0; j < rank; j++)
                 {
-                    return false;
+                    if (i == ranks[j])
+                    {
+                        return false;
+                    }
                 }
             }
             ranks[rank] = i;
             return true;
         }
     }
-    return false; // name not found
+    return false; // Candidate name not found
 }
 
-// Update preferences matrix for one voter's rankings
+/*
+ * record_preferences:
+ * Updates global preferences[][] based on a single voter's ranks[].
+ * For every candidate ranked higher, increment preference over lower-ranked candidates.
+ */
 void record_preferences(int ranks[])
 {
     for (int i = 0; i < candidate_count - 1; i++)
@@ -137,14 +160,18 @@ void record_preferences(int ranks[])
     }
 }
 
-// Identify all winning pairs (only one per i vs. j duel)
+/*
+ * add_pairs:
+ * Creates an array of winning pairs where one candidate is preferred over another.
+ * Skips ties (equal preference counts).
+ */
 void add_pairs(void)
 {
     for (int i = 0; i < candidate_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if (preferences[i][j] > preferences[j][i])
+            if (preferences[i][j] > preferences[j][i]) // i beats j
             {
                 pairs[pair_count].winner = i;
                 pairs[pair_count].loser = j;
@@ -154,19 +181,27 @@ void add_pairs(void)
     }
 }
 
-// Sort pairs by strength of victory (descending order)
-// Uses merge sort for stability and efficiency
+/*
+ * sort_pairs:
+ * Sorts the pairs[] array in decreasing order of "strength of victory."
+ * Strength of victory = preferences[winner][loser]
+ * Uses merge sort for O(n log n) performance.
+ */
 void sort_pairs(void)
 {
     merge_sort(pairs, pair_count);
 }
 
-// Lock in pairs one by one, avoiding cycles
+/*
+ * lock_pairs:
+ * Locks pairs into the directed graph in sorted order,
+ * skipping any that would create a cycle.
+ */
 void lock_pairs(void)
 {
     for (int i = 0; i < pair_count; i++)
     {
-        // Only lock if it does not create a cycle
+        // Only lock if it won't create a cycle
         if (!check_cycle(pairs[i].winner, pairs[i].loser))
         {
             locked[pairs[i].winner][pairs[i].loser] = true;
@@ -174,44 +209,46 @@ void lock_pairs(void)
     }
 }
 
-// Print the winner (source of the graph)
+/*
+ * print_winner:
+ * The winner is the "source" of the graph: a candidate with no edges pointing at them.
+ */
 void print_winner(void)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        bool is_source = true;
-
+        int count = 0;
         for (int j = 0; j < candidate_count; j++)
         {
-            if (locked[j][i])
+            if (!locked[j][i]) // No one beats candidate i here
             {
-                is_source = false;
-                break;
+                count++;
             }
         }
-
-        if (is_source)
+        if (count == candidate_count) // Candidate never beaten
         {
             printf("%s\n", candidates[i]);
-            return;
         }
     }
 }
 
-// Recursive merge sort
+/*
+ * merge_sort:
+ * Recursively sorts an array of pairs by strength of victory (descending).
+ */
 void merge_sort(pair array[], int size)
 {
     if (size == 1)
     {
-        return;
+        return; // Base case: single element
     }
 
     int mid = size / 2;
     int end = size - mid;
 
+    // Split into left and right arrays
     pair left[mid];
     pair right[end];
-
     for (int i = 0; i < mid; i++)
     {
         left[i] = array[i];
@@ -221,28 +258,36 @@ void merge_sort(pair array[], int size)
         right[i] = array[i + mid];
     }
 
+    // Sort each half
     merge_sort(left, mid);
     merge_sort(right, end);
 
+    // Merge back together
     merge(size, mid, array, left, right);
 }
 
-// Merge step of merge sort
+/*
+ * merge:
+ * Merges two sorted arrays (left[] and right[]) into array[] in sorted order.
+ */
 void merge(int size, int mid, pair array[], pair left[], pair right[])
 {
     int i = 0, j = 0, k = 0;
-
     while (i < size)
     {
+        // If right array is empty, take from left
         if (k == size - mid)
         {
             array[i++] = left[j++];
         }
+        // If left array is empty, take from right
         else if (j == mid)
         {
             array[i++] = right[k++];
         }
-        else if (preferences[left[j].winner][left[j].loser] > preferences[right[k].winner][right[k].loser])
+        // Compare strength of victory and pick larger
+        else if (preferences[left[j].winner][left[j].loser] >
+                 preferences[right[k].winner][right[k].loser])
         {
             array[i++] = left[j++];
         }
@@ -253,17 +298,20 @@ void merge(int size, int mid, pair array[], pair left[], pair right[])
     }
 }
 
-// Check recursively if locking this pair would create a cycle
+/*
+ * check_cycle:
+ * Detects if locking a given pair would create a cycle in the graph.
+ * Uses recursion to follow the chain of locked edges.
+ */
 bool check_cycle(int winner, int loser)
 {
-    if (loser == winner)
+    if (loser == winner) // Cycle detected
     {
-        return true; // Cycle detected
+        return true;
     }
-
     for (int i = 0; i < candidate_count; i++)
     {
-        if (locked[loser][i])
+        if (locked[loser][i]) // Follow edge from loser to next candidate
         {
             if (check_cycle(winner, i))
             {
@@ -271,6 +319,5 @@ bool check_cycle(int winner, int loser)
             }
         }
     }
-
-    return false; // No cycle
+    return false; // No cycle found
 }
