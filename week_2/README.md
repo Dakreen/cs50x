@@ -1,62 +1,87 @@
-# Substitution Cipher
-
-**Author:** Dakreen  
-**Date:** July 2025
-**Course:** CS50x – Problem Set 2
-
----
+# Substitution Cipher (CS50 Problem Set 2)
 
 ## Overview
-This program implements a **Substitution Cipher**, where each letter in the plaintext is replaced with a corresponding letter from a user-provided key.  
-The key must contain all 26 letters of the English alphabet exactly once (case-insensitive) and can be provided in any order.
+This program implements a **substitution cipher**.  
+A substitution cipher replaces each letter of the plaintext with another letter according to a given key.  
+The key must contain **26 unique alphabetic characters** (case-insensitive).  
 
----
-
-## Problem Solved
-In classical cryptography, substitution ciphers provide a simple way to encrypt messages by substituting letters according to a fixed mapping.  
-This program:
-- Validates the encryption key before use.
-- Preserves the case of each letter in the plaintext.
-- Leaves non-alphabetic characters unchanged.
+The program preserves:
+- Uppercase → stays uppercase  
+- Lowercase → stays lowercase  
+- Non-alphabetic characters → remain unchanged  
 
 ---
 
 ## How It Works
-1. **User provides a key** as a command-line argument.
-2. **Key validation** checks:
-   - Length of exactly 26 characters.
-   - All characters are alphabetic.
-   - No duplicate letters (case-insensitive).
-3. **Plaintext prompt** using the CS50 library’s `get_string()`.
-4. **Encryption loop**:
-   - For each alphabetic character, find its position in the alphabet.
-   - Replace it with the letter at the same position in the key.
-   - Preserve original case.
-   - Copy non-alphabetic characters as-is.
-5. Output the **ciphertext**.
+
+1. **Command-line Argument**
+   - The program expects exactly one argument: the substitution key (26 unique letters).
+   - Example valid keys:  
+     ```
+     NQXPOMAFTRHLZGECYJIUWSKDVB
+     nqxpomaftrhlzgecyjiuwskdvb
+     NqXpOmAfTrHlZgEcYjIuWsKdVb
+     ```
+
+2. **Key Validation**
+   - Must be **26 characters long**.  
+   - All characters must be alphabetic (A–Z or a–z).  
+   - Each letter must appear **exactly once** (no duplicates).  
+
+3. **Encryption**
+   - Reads plaintext from the user (`get_string`).  
+   - For each character:
+     - If alphabetic → substitute with corresponding key letter (preserve case).  
+     - If not alphabetic → leave as-is.  
+   - Outputs the result as ciphertext.  
 
 ---
 
-## Key Functions
-- `key_checker()` → Validates the encryption key for length, alphabetic characters, and uniqueness.
-- `cipher()` → Applies the substitution cipher to the provided plaintext.
+## File Structure
+- **substitution.c** → main program
+- Functions:
+  - `main()` → handles input, validates key, manages flow.
+  - `key_checker(string key)` → validates the key against the rules.
+  - `cipher(string text, string key)` → applies substitution to produce ciphertext.
 
 ---
 
-## Why This Project Is Interesting
-- Reinforces string manipulation and validation logic.
-- Demonstrates **character property handling** via `ctype.h` functions (`isalpha`, `toupper`, `tolower`).
-- Introduces mapping between two alphabets using indexing.
+## Example Runs
+
+```bash
+$ ./substitution YTNSHKVEFXRBAUQZCLWDMIPGJO
+plaintext:  HELLO
+ciphertext: EHBBQ
+$ ./substitution VCHPRZGJNTLSKFBDQWAXEUYMOI
+plaintext:  hello, world
+ciphertext: jrssb, ybwsp
+$ ./substitution QWERTYUIOPASDFGHJKLZXCVBNM
+plaintext:  CS50!
+ciphertext: EQ50!
+$ ./substitution ABC
+Key must contain 26 characters.
+```
 
 ---
 
-## References
-- [Substitution cipher – Wikipedia](https://en.wikipedia.org/wiki/Substitution_cipher)  
-- [CS50x Problem Set 2 Specification](https://cs50.harvard.edu/x/)
+## Notes
+- Uses CS50’s `get_string()` for input.
+- Validates command-line arguments before encrypting.
+- Demonstrates **arrays**, **loops**, **conditionals**, and **string** handling in C.
 
 ---
 
-## Note
-This project was developed as part of **CS50x** while learning C.  
-It uses the **CS50 Library** (`cs50.h`) for simplified input handling via `get_string()`.  
-For production-grade code, you could replace this with standard C functions like `fgets()` and optimize encryption by **precomputing a mapping array** to achieve `O(n)` encryption.
+## Author
+- **Name:** Jerome Henry
+- **Date:** July 2025
+
+---
+
+## Recruiter Note
+This project demonstrates my ability to:
+   - Implement **string validation** and error handling.
+   - Work with **arrays** and **character manipulation** in C.
+   - Preserve **case sensitivity and handle edge cases**.
+   - Write **modular, well-documented code**.
+
+It reflects my growing skills in algorithmic thinking and secure handling of text transformations — both useful in systems programming and cybersecurity.

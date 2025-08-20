@@ -1,72 +1,102 @@
-# Tideman Voting Algorithm
-
-**Author:** Dakreen  
-**Date:** July 2025  
-**Course:** CS50x – Problem Set 3
-
----
+# Tideman Voting Algorithm (CS50 Problem Set 3)
 
 ## Overview
-This program implements the **Tideman (Ranked Pairs)** voting algorithm, a ranked-choice voting method that determines the winner without creating contradictions in voter preferences.  
-It ensures that the most preferred candidate wins while avoiding cycles in the directed preference graph.
+This program implements the **Tideman (Ranked Pairs) voting method**, a ranked-choice voting algorithm.  
+It determines the winner of an election by considering voter preferences and building a graph of candidate victories **without creating cycles**.
 
----
-
-## Problem Solved
-Traditional plurality voting can lead to winners who are not the most broadly supported candidate.  
-Tideman’s method:
-- Records voters’ ranked preferences.
-- Compares every pair of candidates.
-- Orders these pairs by the **strength of victory**.
-- Locks them into a directed graph, skipping any that would create cycles.
-- Declares the candidate with no incoming edges as the winner.
+Steps:
+1. Record preferences between all pairs of candidates.  
+2. Create pairs of candidates (winner → loser).  
+3. Sort pairs by **strength of victory**.  
+4. Lock pairs into a directed graph (skip any that would form a cycle).  
+5. The candidate with **no edges pointing at them** is declared the winner.  
 
 ---
 
 ## How It Works
-1. **Initialize** preference and locked matrices.
-2. **Collect votes**:
-   - Validate each vote with `vote()`.
-   - Record preferences with `record_preferences()`.
-3. **Add pairs**:
-   - Store all winning/losing candidate pairs using `add_pairs()`.
-4. **Sort pairs**:
-   - Sort in descending order of victory strength using `merge_sort()`.
-5. **Lock pairs**:
-   - Add edges to the graph with `lock_pairs()`, avoiding cycles via `check_cycle()`.
-6. **Print winner**:
-   - Candidate with no incoming edges is declared winner via `print_winner()`.
+
+1. **Input**
+   - Candidate names are provided as command-line arguments.
+   - Number of voters is requested with `get_int()`.
+   - Each voter provides ranked preferences for all candidates.
+
+2. **Data Structures**
+   - `preferences[i][j]`: number of voters who prefer candidate `i` over `j`.
+   - `locked[i][j]`: `true` if candidate `i` is locked in over `j`.
+   - `pairs[]`: list of winner–loser pairs.
+
+3. **Functions**
+   - `vote()` → records a voter’s individual ranking.  
+   - `record_preferences()` → updates global preferences matrix.  
+   - `add_pairs()` → builds winner–loser pairs.  
+   - `sort_pairs()` → sorts pairs by strength of victory (using merge sort).  
+   - `lock_pairs()` → locks pairs into the graph, skipping cycles.  
+   - `print_winner()` → finds the graph’s “source” node (the winner).  
+
+4. **Cycle Detection**
+   - Implemented recursively in `check_cycle()`.  
+   - Ensures no cycles are formed in the locked graph.  
 
 ---
 
-## Key Functions
-- `vote()` → Validates and records candidate ranks for a voter.
-- `record_preferences()` → Updates global preferences matrix.
-- `add_pairs()` → Identifies all winning pairs from preferences.
-- `sort_pairs()` → Sorts pairs by strength of victory.
-- `lock_pairs()` → Locks in pairs without forming cycles.
-- `check_cycle()` → Recursive cycle detection.
-- `print_winner()` → Finds the graph’s source (winner).
+## File Structure
+- **tideman.c** → full implementation
+- Functions:  
+  - `vote`, `record_preferences`, `add_pairs`, `sort_pairs`, `lock_pairs`, `print_winner`  
+  - `merge_sort`, `merge` → sorting helper functions  
+  - `check_cycle` → cycle detection  
 
 ---
 
-## Why This Project Is Interesting
-- Involves **graph theory** concepts such as directed acyclic graphs (DAGs) and cycle detection.
-- Uses **sorting algorithms** (merge sort) for performance.
-- Applies recursion to prevent graph cycles.
-- Demonstrates ability to translate a real-world voting method into C code.
+## Example Run
+
+```bash
+$ ./tideman Alice Bob Charlie
+Number of voters: 5
+Rank 1: Alice
+Rank 2: Charlie
+Rank 3: Bob
+
+Rank 1: Bob
+Rank 2: Charlie
+Rank 3: Alice
+
+Rank 1: Charlie
+Rank 2: Alice
+Rank 3: Bob
+
+Rank 1: Alice
+Rank 2: Bob
+Rank 3: Charlie
+
+Rank 1: Charlie
+Rank 2: Bob
+Rank 3: Alice
+
+Charlie
+```
 
 ---
 
-## References
-- Tideman, N. (1987). *Independence of clones as a criterion for voting rules*.  
-- [CS50x Problem Set 3 Specification](https://cs50.harvard.edu/x/)  
+## Notes
+- Handles up to 9 candidates (configurable with MAX).
+- Implements **merge sort** (O(n log n)) instead of bubble sort for efficiency.
+- Uses **recursion** in check_cycle to prevent infinite loops.
+- Designed for **clarity and modularity**, with **heavy inline documentation**.
 
 ---
 
-## Note
-This project was developed as part of **CS50x** while learning C.  
-It uses the **CS50 Library** (`cs50.h`) for input handling (`get_int()`, `get_string()`).  
-In production code:
-- You would replace CS50 input functions with standard C equivalents.
-- You could optimize sorting or use adjacency lists for graph representation.
+## Author
+- **Name:** Jerome Henry
+- **Date:** August 2025
+
+---
+
+## Recruiter Note
+This project demonstrates my ability to:
+   - Implement a non-trivial **graph algorithm** (cycle detection).
+   - Apply **sorting algorithms** (merge sort).
+   - Use **multi-dimensional arrays** and **structures** in C.
+   - Break down complex problems into **modular functions**.
+
+It shows strong skills in algorithm design, data structures, and problem-solving — directly transferable to system, network, and cybersecurity work.

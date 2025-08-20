@@ -1,56 +1,85 @@
-# Credit Card Validator
-
-**Author:** Dakreen  
-**Date:** June 2025  
-**Course:** CS50x – Problem Set 1
-
----
+# Credit (CS50 Problem Set 1)
 
 ## Overview
-This program validates credit card numbers using the **Luhn algorithm** and determines the card type (**AMEX**, **MASTERCARD**, or **VISA**) based on the number’s length and starting digits.
+This program implements a credit card validator using **Luhn’s Algorithm**.  
+It takes a credit card number as input and determines whether the number is valid and, if so, what type of card it is:
 
----
-
-## Problem Solved
-Credit card numbers follow specific patterns that can be validated before sending them to a payment processor.  
-By checking both the checksum and the card’s prefix rules, we can:
-- Detect invalid numbers early.
-- Identify the issuing network.
+- **AMEX** (15 digits, starts with 34 or 37)  
+- **MASTERCARD** (16 digits, starts with 51–55)  
+- **VISA** (13 or 16 digits, starts with 4)  
+- Otherwise: **INVALID**
 
 ---
 
 ## How It Works
-1. Prompt the user for a credit card number.  
-2. Count the number of digits.  
-3. Extract the first one or two digits for card type identification.  
-4. Apply **Luhn’s algorithm** to verify the checksum.  
-5. Match card type based on:
-   - **AMEX**: 15 digits, starts with 34 or 37  
-   - **MASTERCARD**: 16 digits, starts with 51–55  
-   - **VISA**: 13 or 16 digits, starts with 4  
-6. Print the card type or `"INVALID"`.
+
+1. **Prompt for Input**  
+   - The user enters a credit card number (`long`).
+
+2. **Length Check**  
+   - Only numbers with 13, 15, or 16 digits are considered.
+
+3. **Prefix Check**  
+   - The first one or two digits are extracted to identify the card issuer.
+
+4. **Luhn’s Algorithm** (via `checksum()`):  
+   - Starting from the **second-to-last digit**, double every other digit.  
+   - If doubling produces a two-digit number, add both digits separately.  
+   - Add this sum to the sum of digits that were **not doubled**.  
+   - If the total modulo 10 equals 0 → the number is valid.
+
+5. **Decision**  
+   - If the number passes both **prefix check** and **Luhn’s check**, print the card type.  
+   - Otherwise, print `INVALID`.
 
 ---
 
-## Key Functions
-- `numberLength()` → Counts the number of digits in the card number.  
-- `checksum()` → Applies Luhn’s algorithm to verify validity.
+## File Structure
+- **credit.c** → main program
+- Functions:
+  - `main()` → handles input, card type checks, and calls validation.
+  - `checksum(long number)` → implements Luhn’s Algorithm.
+  - `numberLength(long number)` → helper to count digits.
 
 ---
 
-## 💡 Why This Project Is Interesting
-- Combines **input validation**, **mathematical algorithms**, and **control flow**.  
-- Demonstrates the ability to work with **large numbers** and implement a **real-world checksum** algorithm from scratch.
+## Example Runs
+
+```bash
+$ ./credit
+Number: 378282246310005
+AMEX
+$ ./credit
+Number: 5555555555554444
+MASTERCARD
+$ ./credit
+Number: 4111111111111111
+VISA
+$ ./credit
+Number: 1234567890
+INVALID
+```
 
 ---
 
-## Note
-This project was developed as part of **CS50x** while learning the C programming language.  
-It uses the **CS50 Library** (`cs50.h`) for simplified input handling via `get_long()`.  
-This library is designed for educational purposes and is **not required** in production — in real-world C programs, you would use `scanf()` or similar standard library functions for input.  
+## Notes
+- Uses `get_long` from CS50 Library for input.
+- Written in C, tested with `check50` and `style50`.
+- Demonstrates **control flow**, **loops**, **functions**, and **modulo arithmetic**.
 
 ---
 
-## 📚 References
-- [Luhn Algorithm – Wikipedia](https://en.wikipedia.org/wiki/Luhn_algorithm)  
-- [CS50x Problem Set 1 Specification](https://cs50.harvard.edu/x/)
+## Author
+- **Name:** Jerome Henry  
+- **Date:** July 2025  
+
+---
+
+## Recruiter Note
+This project demonstrates my ability to:  
+- Implement and explain a **classic validation algorithm** (Luhn’s).  
+- Work with **input validation** and error handling.  
+- Apply **modular design** using helper functions.  
+- Write **clear, well-documented C code** that passes automated tests.  
+
+It reflects both algorithmic thinking and clean coding style — skills I apply when solving larger system, network, and cybersecurity problems.
