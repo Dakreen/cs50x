@@ -1,11 +1,11 @@
-📝 Notes: Bubble Sort vs Merge Sort
+# Notes: Bubble Sort vs Merge Sort
 
 
 ---
 
-1. Bubble Sort (Iterative)
+## 1. Bubble Sort (Iterative)
 
-🔹 Idea
+### Idea
 
 Repeatedly compare adjacent elements.
 
@@ -16,21 +16,25 @@ Largest element “bubbles” to the end after each pass.
 Keep looping until no swaps needed.
 
 
-🔹 Example
+### Example
 
+```
 Array: [5, 3, 8, 2]
 Pass 1: [3, 5, 2, 8]
 Pass 2: [3, 2, 5, 8]
-Pass 3: [2, 3, 5, 8] ✅ sorted
+Pass 3: [2, 3, 5, 8]
+```
 
-🔹 Pseudocode
+### Pseudocode
 
+```
 repeat n-1 times:
     for i from 0 to n-2:
         if arr[i] > arr[i+1]:
             swap arr[i], arr[i+1]
+```
 
-🔹 Complexity
+### Complexity
 
 Best case: O(n) (already sorted with optimization).
 
@@ -44,9 +48,9 @@ Simple but inefficient for large arrays.
 
 ---
 
-2. Merge Sort (Recursive)
+## 2. Merge Sort (Recursive)
 
-🔹 Idea
+### Idea
 
 Divide-and-conquer:
 
@@ -61,23 +65,27 @@ Divide-and-conquer:
 
 
 
-🔹 Example
+### Example
 
+```
 Array: [5, 3, 8, 2]
 Split → [5, 3] and [8, 2]
 Sort → [3, 5] and [2, 8]
 Merge → [2, 3, 5, 8]
+```
 
-🔹 Pseudocode
+### Pseudocode
 
+```
 if n < 2:
     return
 mid = n/2
 merge_sort(left half)
 merge_sort(right half)
 merge the two halves into sorted array
+```
 
-🔹 Complexity
+### Complexity
 
 Best case: O(n log n).
 
@@ -91,7 +99,7 @@ Efficient and scalable.
 
 ---
 
-3. Comparison Table
+## 3. Comparison Table
 
 Feature	Bubble Sort	Merge Sort
 
@@ -106,26 +114,30 @@ Use case	Small arrays, teaching	Large arrays, real-world use
 
 ---
 
-4. Visual
+## 4. Visual
 
 Bubble Sort (n=4):
 
+```
 [5 3 8 2]
 → [3 5 2 8]
 → [3 2 5 8]
 → [2 3 5 8]
+```
 
 Merge Sort (n=4):
 
+```
 [5 3 8 2]
 → [5 3] [8 2]
 → [3 5] [2 8]
 → [2 3 5 8]
+```
 
 
 ---
 
-✅ In short:
+## In short:
 
 Bubble Sort → easy but slow (O(n²)).
 
