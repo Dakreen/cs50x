@@ -1,9 +1,9 @@
-Memory in C — Stack vs Heap
+# Memory in C — Stack vs Heap
 
 
 ---
 
-1. What is Memory?
+## 1. What is Memory?
 
 When a C program runs, it uses memory (RAM) to store:
 
@@ -19,7 +19,7 @@ This memory is divided into different regions, each with its own rules.
 
 ---
 
-2. The Stack
+## 2. The Stack
 
 Automatically managed by the compiler.
 
@@ -30,14 +30,16 @@ Memory is released automatically when the function exits.
 Very fast, but limited in size (a few MB).
 
 
-Example:
+### Example:
 
+```c
 void foo() {
     int x = 10;          // stored on stack
     int arr[3] = {1,2,3}; // stored on stack
 } // x and arr are destroyed here
+```
 
-⚠️ Risks:
+Risks:
 
 Stack overflow (too much recursion or huge arrays).
 
@@ -47,7 +49,7 @@ Cannot dynamically resize arrays.
 
 ---
 
-3. The Heap
+## 3. The Heap
 
 Manually managed by the programmer.
 
@@ -58,15 +60,17 @@ Larger than stack, can persist until freed.
 Slower access, because the system has to manage allocations.
 
 
-Example:
+### Example:
 
+```c
 void foo() {
     int *list = malloc(3 * sizeof(int));  // allocated on heap
     list[0] = 42;
     free(list); // must be freed manually
 }
+```
 
-⚠️ Risks:
+Risks:
 
 Memory leaks → forgetting to free.
 
@@ -78,23 +82,26 @@ Double free → freeing the same block twice.
 
 ---
 
-4. Stack vs Heap — Quick Comparison
+## 4. Stack vs Heap — Quick Comparison
 
-Feature	Stack 🥞	Heap 🏗️
-
-Managed by	Compiler (automatic)	Programmer (malloc/free)
-Size	Small, fixed	Large, flexible
-Lifetime	Ends when function ends	Until manually freed
-Speed	Very fast	Slower
-Typical use	Local vars, small arrays	Dynamic data structures
-Risks	Overflow	Leaks, dangling, double free
+```
+Feature	| Stack                        | Heap
++--------------------------------------------------------------------+
+Managed | by Compiler (automatic)      | Programmer (malloc/free)
+Size	| Small, fixed                 | Large, flexible
+Lifetime| Ends when function ends      | Until manually freed
+Speed	| Very fast                    | Slower
+Typical | use Local vars, small arrays | Dynamic data structures
+Risks	| Overflow	                   | Leaks, dangling, double free 
+```
 
 
 
 ---
 
-5. Memory Layout
+## 5. Memory Layout
 
+```
 +-----------------------+
 |  Code (program text)  |  <- instructions
 +-----------------------+
@@ -106,11 +113,12 @@ Risks	Overflow	Leaks, dangling, double free
 |        Stack          |  <- grows downward
 |   (local vars)        |
 +-----------------------+
+```
 
 
 ---
 
-6. Cybersecurity Angle
+## 6. Cybersecurity Angle
 
 Stack → target of buffer overflows.
 
@@ -122,7 +130,7 @@ Many vulnerabilities in C/C++ come from poor memory management.
 
 ---
 
-✅ In short:
+## In short:
 
 Stack = fast, temporary, automatic.
 
