@@ -101,14 +101,16 @@ Efficient and scalable.
 
 ## 3. Comparison Table
 
-Feature	Bubble Sort	Merge Sort
-
-Method	Iterative (loop + swap)	Recursive (divide and conquer)
-Best case	O(n)	O(n log n)
-Worst case	O(n²)	O(n log n)
-Space	O(1) (in-place)	O(n) (extra arrays)
-Simplicity	Very simple	More complex
-Use case	Small arrays, teaching	Large arrays, real-world use
+```
+Feature	   | Bubble Sort             |	Merge Sort
++--------------------------------------------------------------------+
+Method	   | Iterative (loop + swap) |	Recursive (divide and conquer)
+Best case  | O(n)                    |	O(n log n) 
+Worst case | O(n²)                   |	O(n log n)
+Space      | O(1) (in-place)         |	O(n) (extra arrays)
+Simplicity | Very simple             |	More complex
+Use case   | Small arrays            |  Large arrays, real-world use
+```
 
 
 
