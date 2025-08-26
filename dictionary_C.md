@@ -1,6 +1,6 @@
-📖 Dictionaries in C
+# Dictionaries in C
 
-1. What is a Dictionary?
+## 1. What is a Dictionary?
 
 A dictionary is a data structure that stores key → value pairs.
 
@@ -17,7 +17,7 @@ Or even binary search trees.
 
 ---
 
-2. Basic Operations
+## 2. Basic Operations
 
 Insert → add a key/value.
 
@@ -33,7 +33,7 @@ Unload → free memory.
 
 ---
 
-3. Using a Hash Table
+## 3. Using a Hash Table
 
 A hash table is an array of linked lists.
 
@@ -41,7 +41,7 @@ Use a hash function to map the key (string) → index.
 
 If multiple keys map to the same index → use a linked list to handle collisions.
 
-
+```c
 // Node structure for linked list
 typedef struct node
 {
@@ -52,12 +52,12 @@ typedef struct node
 // Hash table
 const unsigned int N = 1000;  // number of buckets
 node *table[N];
-
+```
 
 ---
 
-4. Hash Function Example
-
+## 4. Hash Function Example
+```c
 unsigned int hash(const char *word)
 {
     unsigned long hash = 5381;
@@ -66,12 +66,12 @@ unsigned int hash(const char *word)
         hash = ((hash << 5) + hash) + c; // hash * 33 + c
     return hash % N;
 }
-
+```
 
 ---
 
-5. Insert a Word
-
+## 5. Insert a Word
+```c
 bool insert(const char *word)
 {
     unsigned int index = hash(word);
@@ -84,12 +84,12 @@ bool insert(const char *word)
     table[index] = n;
     return true;
 }
-
+```
 
 ---
 
-6. Search for a Word
-
+## 6. Search for a Word
+```c
 bool check(const char *word)
 {
     unsigned int index = hash(word);
@@ -102,12 +102,12 @@ bool check(const char *word)
     }
     return false;
 }
-
+```
 
 ---
 
-7. Free the Dictionary
-
+## 7. Free the Dictionary
+```c
 void unload(void)
 {
     for (int i = 0; i < N; i++)
@@ -121,11 +121,11 @@ void unload(void)
         }
     }
 }
-
+```
 
 ---
 
-✅ Key Takeaways
+## Key Takeaways
 
 A dictionary maps keys → values.
 
