@@ -1,6 +1,6 @@
-🔤 Tries in C
+# Tries in C
 
-1. What is a Trie?
+## 1. What is a Trie?
 
 A trie (from “retrieval”) is a tree-like data structure for storing strings (words).
 
@@ -14,7 +14,7 @@ Great for dictionaries, autocomplete, spell-checkers.
 
 ---
 
-2. Structure of a Trie Node
+## 2. Structure of a Trie Node
 
 Each node needs:
 
@@ -25,30 +25,30 @@ An array of children → one per possible character.
 
 
 For English lowercase + apostrophe = 26 + 1 = 27 children.
-
+```c
 typedef struct node
 {
     bool is_word;
     struct node *children[27];  // 26 letters + apostrophe
 } node;
-
+```
 
 ---
 
-3. Mapping a Character to Index
-
+## 3. Mapping a Character to Index
+```c
 int char_to_index(char c)
 {
     if (c == '\'')
         return 26;
     return tolower(c) - 'a';
 }
-
+```
 
 ---
 
-4. Inserting a Word
-
+## 4. Inserting a Word
+```c
 bool insert(node *root, const char *word)
 {
     node *cursor = root;
@@ -67,12 +67,12 @@ bool insert(node *root, const char *word)
     cursor->is_word = true;  // mark word end
     return true;
 }
-
+```
 
 ---
 
-5. Searching for a Word
-
+## 5. Searching for a Word
+```c
 bool search(node *root, const char *word)
 {
     node *cursor = root;
@@ -85,12 +85,12 @@ bool search(node *root, const char *word)
     }
     return cursor->is_word;
 }
-
+```
 
 ---
 
-6. Freeing a Trie
-
+## 6. Freeing a Trie
+```c
 void free_trie(node *root)
 {
     for (int i = 0; i < 27; i++)
@@ -100,7 +100,7 @@ void free_trie(node *root)
     }
     free(root);
 }
-
+```
 
 ---
 
