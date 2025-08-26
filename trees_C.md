@@ -1,6 +1,6 @@
-🌳 Trees in C
+# Trees in C
 
-1. What is a Tree?
+## 1. What is a Tree?
 
 A tree is a data structure made of nodes.
 
@@ -16,22 +16,22 @@ Subtree = a smaller tree inside the big tree.
 
 ---
 
-2. Binary Tree (most common in C)
+## 2. Binary Tree (most common in C)
 
 Each node has at most two children (left and right).
 
-
+```c
 typedef struct node
 {
     int value;
     struct node *left;
     struct node *right;
 } node;
-
+```
 
 ---
 
-3. Binary Search Tree (BST)
+## 3. Binary Search Tree (BST)
 
 Special type of binary tree with ordering rules:
 
@@ -43,8 +43,8 @@ Useful for searching, inserting, deleting efficiently (≈ O(log n) average if b
 
 ---
 
-4. Create a Node
-
+## 4. Create a Node
+```c
 node *create(int value)
 {
     node *n = malloc(sizeof(node));
@@ -56,12 +56,12 @@ node *create(int value)
     }
     return n;
 }
-
+```
 
 ---
 
-5. Insert into BST
-
+## 5. Insert into BST
+```c
 node *insert(node *root, int value)
 {
     if (root == NULL)
@@ -74,12 +74,12 @@ node *insert(node *root, int value)
 
     return root;
 }
-
+```
 
 ---
 
-6. Search in BST
-
+## 6. Search in BST
+```c
 bool search(node *root, int value)
 {
     if (root == NULL)
@@ -91,11 +91,11 @@ bool search(node *root, int value)
     else
         return search(root->right, value);
 }
-
+```
 
 ---
 
-7. Tree Traversals
+## 7. Tree Traversals
 
 Different ways to visit all nodes:
 
@@ -107,7 +107,7 @@ Post-order (Left → Right → Root) → useful for freeing memory.
 
 
 Example (in-order):
-
+```c
 void inorder(node *root)
 {
     if (root == NULL)
@@ -116,14 +116,14 @@ void inorder(node *root)
     printf("%i ", root->value);
     inorder(root->right);
 }
-
+```
 
 ---
 
-8. Freeing a Tree
+## 8. Freeing a Tree
 
 Always free memory when done:
-
+```c
 void free_tree(node *root)
 {
     if (root == NULL)
@@ -132,11 +132,11 @@ void free_tree(node *root)
     free_tree(root->right);
     free(root);
 }
-
+```
 
 ---
 
-✅ Key Takeaways
+## Key Takeaways
 
 Trees = hierarchical version of linked lists.
 
