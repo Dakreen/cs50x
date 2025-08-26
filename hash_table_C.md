@@ -1,6 +1,6 @@
-🗂️ Hash Tables in C
+# Hash Tables in C
 
-1. What is a Hash Table?
+## 1. What is a Hash Table?
 
 A hash table is a data structure that maps keys → values.
 
@@ -14,10 +14,10 @@ Super fast average lookup: O(1).
 
 ---
 
-2. Structure in C
+## 2. Structure in C
 
 Each element is a node in a linked list.
-
+```c
 typedef struct node
 {
     char word[LENGTH + 1];   // key (example: dictionary word)
@@ -26,14 +26,14 @@ typedef struct node
 
 const unsigned int N = 1000; // number of buckets
 node *table[N];              // hash table: array of pointers to nodes
-
+```
 
 ---
 
-3. Hash Function
+## 3. Hash Function
 
 Converts a string into an index between 0 and N-1.
-
+```c
 unsigned int hash(const char *word)
 {
     unsigned long h = 5381;
@@ -42,7 +42,7 @@ unsigned int hash(const char *word)
         h = ((h << 5) + h) + c;  // h * 33 + c
     return h % N;
 }
-
+```
 Same word → always same index.
 
 Different words → ideally different indices.
@@ -53,8 +53,8 @@ If collision → store multiple words in same bucket (linked list).
 
 ---
 
-4. Insert into Hash Table
-
+## 4. Insert into Hash Table
+```c
 bool insert(const char *word)
 {
     unsigned int index = hash(word);
@@ -68,12 +68,12 @@ bool insert(const char *word)
     table[index] = n;         // new node becomes new head
     return true;
 }
-
+```
 
 ---
 
-5. Search in Hash Table
-
+## 5. Search in Hash Table
+```c
 bool check(const char *word)
 {
     unsigned int index = hash(word);
@@ -85,12 +85,12 @@ bool check(const char *word)
     }
     return false;
 }
-
+```
 
 ---
 
-6. Free Hash Table
-
+## 6. Free Hash Table
+```c
 void unload(void)
 {
     for (int i = 0; i < N; i++)
@@ -104,7 +104,7 @@ void unload(void)
         }
     }
 }
-
+```
 
 ---
 
