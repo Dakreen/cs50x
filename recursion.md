@@ -248,93 +248,109 @@ With return → stack unwinds while passing values back up.
 
 ---
 
-📝 Note: Recursion Demo in C
+📝 Note: Recursive Experiment with Multiplication
 
-The Code
+🔎 The Code
 
 #include <stdio.h>
 
-void rec(int n)
+int rec(int n)
 {
     if (n == 0)                // Base case
     {
         printf("Base case\n");
-        return;
+        return 1;
     }
 
-    printf("Down %i\n", n);    // Action before recursion (going down)
-    rec(n - 1);                // Recursive call with smaller n
-    printf("Up%i\n", n);       // Action after recursion (going up)
+    printf("%i\n", n);         // Print going down
+    rec(n - 1);                // Recursive call
+
+    n *= 2;                    // Multiply n by 2 after recursion
+    printf("%i\n", n);         // Print result going up
+
+    return n * 2;              // Return doubled again
 }
 
 int main()
 {
-    rec(5);
+    int a = rec(5);
+    printf("%i", a);           // Print final result
     return 0;
 }
 
 
 ---
 
-📌 What it Does
+📌 What happens
 
-Base case: stop when n == 0.
+1. Going down (before recursion): prints original n.
 
-Going down: print Down n before the recursive call.
 
-Going up: print Up n after the recursive call.
+2. Base case: when n == 0, prints "Base case" and returns 1.
+
+
+3. Going up (after recursion): each n is multiplied by 2 and printed.
+
+
+4. Each call also returns n * 2, but you don’t actually use those values in the upper calls (they get overwritten by the local n in each frame).
+
 
 
 
 ---
 
-⏱️ Step-by-step output
+🖨️ Sample Output
 
-Down 5
-Down 4
-Down 3
-Down 2
-Down 1
+5
+4
+3
+2
+1
 Base case
-Up1
-Up2
-Up3
-Up4
-Up5
+2
+4
+6
+8
+10
+20
 
-First the program goes down from 5 → 1, opening calls on the stack.
+5,4,3,2,1 → printed while going down.
 
-At 0, it hits the base case and stops.
+Base case → stopping point at n==0.
 
-Then it goes up 1 → 5, unwinding the stack and finishing each paused call.
+2,4,6,8,10 → printed while going up (each n doubled).
 
-
-
----
-
-🧠 Key Idea
-
-Recursion always has two phases:
-
-1. Descent (going down) → building or preparing, until base case.
-
-
-2. Ascent (going up) → resolving, filling results, closing calls.
-
-
-
-
-This is exactly how create_family works in CS50’s Inheritance:
-
-Going down: reserve space for parents until base generation.
-
-Going up: actually assign parents/alleles and return the child.
+20 → final return value from rec(5) printed in main.
 
 
 
 ---
 
-✅ Use this simple “Down / Base case / Up” pattern whenever recursion feels abstract — it shows clearly where work happens.
+🧠 Key lesson
+
+Every recursive call has its own local n.
+
+The n *= 2; only affects that frame, not the others.
+
+Printing before and after recursion shows downward vs upward phases.
+
+Your return n * 2; means the top call (n==5) eventually returns 5 * 2 *again* = 10, but because you also doubled inside, the very top result comes out 20.
+
+
+
+---
+
+✅ Why this is useful
+
+You clearly see two phases:
+
+Going down: 5,4,3,2,1.
+
+Coming up: doubled values.
+
+
+It teaches you how local variables and return values are separate in recursion.
+
 
 
 
