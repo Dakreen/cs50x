@@ -246,3 +246,95 @@ Without return → stack unwinds with no values, just actions.
 
 With return → stack unwinds while passing values back up.
 
+---
+
+📝 Note: Recursion Demo in C
+
+The Code
+
+#include <stdio.h>
+
+void rec(int n)
+{
+    if (n == 0)                // Base case
+    {
+        printf("Base case\n");
+        return;
+    }
+
+    printf("Down %i\n", n);    // Action before recursion (going down)
+    rec(n - 1);                // Recursive call with smaller n
+    printf("Up%i\n", n);       // Action after recursion (going up)
+}
+
+int main()
+{
+    rec(5);
+    return 0;
+}
+
+
+---
+
+📌 What it Does
+
+Base case: stop when n == 0.
+
+Going down: print Down n before the recursive call.
+
+Going up: print Up n after the recursive call.
+
+
+
+---
+
+⏱️ Step-by-step output
+
+Down 5
+Down 4
+Down 3
+Down 2
+Down 1
+Base case
+Up1
+Up2
+Up3
+Up4
+Up5
+
+First the program goes down from 5 → 1, opening calls on the stack.
+
+At 0, it hits the base case and stops.
+
+Then it goes up 1 → 5, unwinding the stack and finishing each paused call.
+
+
+
+---
+
+🧠 Key Idea
+
+Recursion always has two phases:
+
+1. Descent (going down) → building or preparing, until base case.
+
+
+2. Ascent (going up) → resolving, filling results, closing calls.
+
+
+
+
+This is exactly how create_family works in CS50’s Inheritance:
+
+Going down: reserve space for parents until base generation.
+
+Going up: actually assign parents/alleles and return the child.
+
+
+
+---
+
+✅ Use this simple “Down / Base case / Up” pattern whenever recursion feels abstract — it shows clearly where work happens.
+
+
+
