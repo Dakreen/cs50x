@@ -1,6 +1,6 @@
-📌 Notes: Dot (.) vs Arrow (->) in C
+# Notes: Dot (.) vs Arrow (->) in C
 
-1. Dot (.)
+## 1. Dot (.)
 
 Used when you have a struct variable itself.
 
@@ -9,20 +9,20 @@ Syntax:
 struct_variable.field
 
 Example:
-
+```c
 typedef struct
 {
     int age;
 } Person;
 
 Person p;
-p.age = 30;     // ✅ use dot
-
+p.age = 30;     // use dot
+```
 
 
 ---
 
-2. Arrow (->)
+## 2. Arrow (->)
 
 Used when you have a pointer to a struct.
 
@@ -35,15 +35,15 @@ Equivalent to:
 (*struct_pointer).field
 
 Example:
-
+```c
 Person *ptr = malloc(sizeof(Person));
-ptr->age = 40;  // ✅ use arrow
-
+ptr->age = 40;  // use arrow
+```
 
 
 ---
 
-3. Quick Analogy
+## 3. Quick Analogy
 
 . → “I already have the box, open it directly.”
 
@@ -53,8 +53,8 @@ ptr->age = 40;  // ✅ use arrow
 
 ---
 
-4. Side-by-Side Example
-
+## 4. Side-by-Side Example
+```c
 typedef struct
 {
     int number;
@@ -67,11 +67,11 @@ Node *p = &n;
 p->number = 10;      // use ->
 
 printf("%i\n", n.number); // prints 10
-
+```
 
 ---
 
-✅ Rule of thumb:
+## Rule of thumb:
 
 Struct variable → .
 
