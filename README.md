@@ -20,7 +20,7 @@ Each folder includes:
 
 ## About Me
 
-I'm preparing a career change to become an **Application & Infrastructure Security Technician**, 
+I'm preparing a career change to become an **Cybersecurity Technician – Systems, Networks & Applications**, 
 with skills in systems, networking, cloud, and ethical hacking.  
 
 CS50 is part of my technical foundation.
