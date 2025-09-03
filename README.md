@@ -20,10 +20,8 @@ Each folder includes:
 
 ## About Me
 
-I'm preparing a career change to become an **Cybersecurity Technician – Systems, Networks & Applications**, 
-with skills in systems, networking, cloud, and ethical hacking.  
-
-CS50 is part of my technical foundation.
+I'm preparing a career change to become a **Cybersecurity Technician – Systems, Networks & Applications**.  
+CS50 is part of my technical foundation, helping me strengthen programming, problem-solving, and security skills.
 
 ## Academic Honesty
 
