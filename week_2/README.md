@@ -74,14 +74,3 @@ Key must contain 26 characters.
 ## Author
 - **Name:** Jerome Henry
 - **Date:** July 2025
-
----
-
-## Recruiter Note
-This project demonstrates my ability to:
-   - Implement **string validation** and error handling.
-   - Work with **arrays** and **character manipulation** in C.
-   - Preserve **case sensitivity and handle edge cases**.
-   - Write **modular, well-documented code**.
-
-It reflects my growing skills in algorithmic thinking and secure handling of text transformations — both useful in systems programming and cybersecurity.

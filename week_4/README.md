@@ -77,14 +77,3 @@ Each recovered file can be opened as a normal image.
 ## Author
 - **Name:** Jerome Henry
 - **Date:** August 2025
-
----
-
-## Recruiter Note
-This project demonstrates my ability to:
-- Work with **low-level file I/O** in C (`fopen`, `fread`, `fwrite`).
-- Apply **bitwise operations** to detect file signatures.
-- Manage **dynamic file creation** and **memory safety**.
-- Build a **forensic tool** that reconstructs deleted or fragmented data.
-
-It showcases skills in C programming, debugging, and systems-level problem solving — directly relevant to cybersecurity and system/network engineering.

@@ -89,14 +89,3 @@ Charlie
 ## Author
 - **Name:** Jerome Henry
 - **Date:** August 2025
-
----
-
-## Recruiter Note
-This project demonstrates my ability to:
-   - Implement a non-trivial **graph algorithm** (cycle detection).
-   - Apply **sorting algorithms** (merge sort).
-   - Use **multi-dimensional arrays** and **structures** in C.
-   - Break down complex problems into **modular functions**.
-
-It shows strong skills in algorithm design, data structures, and problem-solving — directly transferable to system, network, and cybersecurity work.

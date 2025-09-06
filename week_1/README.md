@@ -71,15 +71,4 @@ INVALID
 
 ## Author
 - **Name:** Jerome Henry  
-- **Date:** July 2025  
-
----
-
-## Recruiter Note
-This project demonstrates my ability to:  
-- Implement and explain a **classic validation algorithm** (Luhn’s).  
-- Work with **input validation** and error handling.  
-- Apply **modular design** using helper functions.  
-- Write **clear, well-documented C code** that passes automated tests.  
-
-It reflects both algorithmic thinking and clean coding style — skills I apply when solving larger system, network, and cybersecurity problems.
+- **Date:** July 2025 
