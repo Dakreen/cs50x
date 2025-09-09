@@ -2,33 +2,29 @@
 
 ## Overview
 
-This program implements a **spell-checker** that verifies words in a text against a dictionary.
-The main logic is implemented in `dictionary.c`, which defines how the dictionary is stored, searched, and unloaded from memory.
+This project is part of **CS50x Problem Set 5**.
+It implements a **spell-checker** that verifies words in a text against a dictionary.
 
-Steps:
-1. Load words from a dictionary file into a hash table.
-2. For each word in a text, check if it exists in the dictionary.
-3. Report misspelled words and performance statistics.
+This repository only contains my work on `dictionary.c` and `dictionary.h`.
+Other files (`speller.c`, test dictionaries, texts) were provided by CS50 staff and are not included here.
 
 ---
 
 ## How It Works
 
-1. **Input**
-- The program is run as: 
-```bash
-./speller dictionary.txt text.txt
-```
-- `dictionary.txt` → list of words used as reference.
-- `text.txt` → text file to spell-check.
+### Core Logic
+- `dictionary.c` defines how the dictionary is:
+  - Loaded into memory  
+  - Searched for matches  
+  - Unloaded (memory freed)  
 
-2. **Data Structures**
-- **Hash table** of size 26^3 (17,576 buckets).
-- Each bucket is a **linked list** of node structs, where each node stores:
-```c
-char word[LENGTH + 1]
-struct node *next
-```
+### Data Structures
+- **Hash table** of size 26³ (17,576 buckets)  
+- Each bucket is a linked list of nodes:
+  ```c
+  char word[LENGTH + 1];
+  struct node *next;
+  ```
 
 3. **Functions (dictionary.c)**
 - `bool check(const char *word)` → searches for a word in the hash table.
@@ -49,28 +45,12 @@ index = 26*26*first + 26*second + third
 ---
 
 ## File Structure
-- **dictionary.c** → my implementation (all main logic written here).
+- **dictionary.c** → my implementation.
 - **dictionary.h** → header file with definitions.
-- **speller.c** → provided by CS50 staff (handles file I/O and testing, not modified).
 
-## Example Run
-```bash
-$ ./speller dictionaries/large texts/lalaland.txt
-MISSPELLED WORDS
-...
+---
 
-WORDS MISSPELLED:     130
-WORDS IN DICTIONARY:  143091
-WORDS IN TEXT:        36742
-TIME IN load:         0.12
-TIME IN check:        0.08
-TIME IN size:         0.00
-TIME IN unload:       0.03
-TIME IN TOTAL:        0.23
-```
 ## Notes
-- Work is focused only on `dictionary.c`.
-- `speller.c` and `dictionary.h` were provided by CS50 and left unchanged.
 - **Design choice:** 26³ buckets balances memory and speed, while using linked lists to handle collisions.
 - **Insert strategy** (`insert_hash_table`):
     - Appends words to the end of the linked list.

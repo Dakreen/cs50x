@@ -108,6 +108,11 @@ unsigned int hash(const char *word)
 void insert_hash_table(const char *word, int hash_number)
 {
     node *n = malloc(sizeof(node));
+    if (n == NULL)
+    {
+        printf("node cannot allocated memory.\n");
+        return;
+    }
     strcpy(n->word, word);
     n->next = NULL;
     if (table[hash_number] == NULL)
