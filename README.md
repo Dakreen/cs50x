@@ -12,6 +12,7 @@ Each folder represents a week of the course:
 - Week 3 – C Algorithms
 - Week 4 – C Memory
 - Week 5 – C Data Structures
+- Week 6 – Python
 - Week 6+ – Coming soon...
 
 Each folder includes:
