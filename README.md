@@ -13,7 +13,8 @@ Each folder represents a week of the course:
 - Week 4 – C Memory
 - Week 5 – C Data Structures
 - Week 6 – Python
-- Week 7+ – Coming soon...
+- Week 7 – SQL
+- Week 8+ – Coming soon...
 
 Each folder includes:
 
