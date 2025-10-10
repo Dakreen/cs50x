@@ -1,0 +1,183 @@
+{
+  "en": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "cv": "Download CV"
+    },
+    "hero": {
+      "title": "Cybersecurity Technician - Systems, Networks & Applications",
+      "text": "Specializing in secure infrastructures, cloud, and application security — leveraging AI and hands-on projects to build resilient digital systems.",
+      "btnProjects": "Explore Projects",
+      "btnContact": "Contact Me"
+    },
+    "highlights": {
+      "title": "Highlights",
+      "systemsTitle": "Systems & Networks",
+      "systemsText": "Windows, Linux, Active Directory, and pfSense for secure infrastructure management.",
+      "cyberTitle": "Cybersecurity",
+      "cyberText": "Hands-on with IDS/IPS, Wazuh, and TryHackMe labs. Preparing for Security+ certification.",
+      "cloudTitle": "Cloud & AI",
+      "cloudText": "Building skills in Azure and AWS. Exploring AI for automation, log analysis, and pentesting co-pilot tasks."
+    },
+    "featuredProjects": {
+      "title": "Featured Projects",
+      "hybridTitle": "Hybrid Network Lab",
+      "hybridText": "Simulated hybrid infrastructure with monitoring, dashboards, and secure transactions.",
+      "coreventraTitle": "Coreventra Framework",
+      "coreventraText": "Backbone for secure digital economies and metaverse-style simulations.",
+      "domoticTitle": "Domotic Project",
+      "domoticText": "DIY secure smart home hub built for privacy, resilience, and local control.",
+      "btnGithub": "View on GitHub"
+    },
+    "about": {
+      "title": "About Me",
+      "subtitle": "Cybersecurity & Cloud Technician (in training)",
+      "text": "Hello! I’m Jerome Henry, a career transitioner specializing in Systems, Networks, Cybersecurity, and Cloud. I’m currently completing the IT Systems & Network Technician training while also developing personal projects like the Hybrid Network Lab, Coreventra, and Domotic Project. My goal is to become a Cybersecurity & Cloud Technician."
+    },
+    "skills": {
+      "title": "Skills",
+      "systemsTitle": "Systems & Networks",
+      "systemsText": "Windows, Linux, Active Directory, and pfSense for secure infrastructure management.",
+      "cyberTitle": "Cybersecurity",
+      "cyberText": "Hands-on with IDS/IPS, Wazuh, and TryHackMe labs. Preparing for Security+ certification.",
+      "cloudTitle": "Cloud & AI",
+      "cloudText": "Building skills in Azure and AWS. Exploring AI for automation, log analysis, and pentesting co-pilot tasks."
+    },
+    "certifications": {
+      "title": "Certifications & Training",
+      "cs50": "CS50 Introduction to CS, Python, Web Programming, Cybersecurity",
+      "tssr": "Advanced Technician in Systems and Networks",
+      "linux": "Linux Essentials LPI",
+      "azure": "Azure Fundamentals",
+      "aws": "AWS Cloud Practitioner",
+      "cka": "CKA Certified Kubernetes Administrator",
+      "security": "CompTIA Security+",
+      "pentest": "CompTIA PenTest+",
+      "ceh": "CEH Certified Ethical Hacker"
+    },
+    "projectsPage": {
+      "title": "My Projects",
+      "hybridTitle": "Hybrid Network Lab",
+      "hybridText": "Simulated hybrid infrastructure with monitoring, dashboards, and secure transactions.",
+      "coreventraTitle": "Coreventra Framework",
+      "coreventraText": "Backbone for secure digital economies and metaverse-style simulations.",
+      "domoticTitle": "Domotic Project",
+      "domoticText": "DIY secure smart home hub built for privacy, resilience, and local control.",
+      "btnGithub": "View on GitHub",
+      "badgeNetworking": "Networking",
+      "badgeFramework": "Framework",
+      "badgeIoT": "IoT",
+      "statusOngoing": "Ongoing",
+      "statusInProgress": "In Progress",
+      "statusPlanned": "Planned"
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "desc": "Feel free to reach out for collaborations, opportunities, or just to connect.",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "placeholderName": "Your Name",
+      "placeholderEmail": "you@example.com",
+      "placeholderMessage": "Your message...",
+      "btnSend": "Send Message"
+    },
+    "footer": {
+      "text": "© 2025 Designed & coded by Jerome Henry"
+    }
+  },
+
+  "fr": {
+    "nav": {
+      "home": "Accueil",
+      "about": "À propos",
+      "projects": "Projets",
+      "contact": "Contact",
+      "cv": "Télécharger CV"
+    },
+    "hero": {
+      "title": "Technicien Cybersécurité - Systèmes, Réseaux & Applications",
+      "text": "Spécialisé dans les infrastructures sécurisées, le cloud et la sécurité applicative — en utilisant l’IA et des projets pratiques pour construire des systèmes numériques résilients.",
+      "btnProjects": "Voir les projets",
+      "btnContact": "Me contacter"
+    },
+    "highlights": {
+      "title": "Points forts",
+      "systemsTitle": "Systèmes & Réseaux",
+      "systemsText": "Windows, Linux, Active Directory et pfSense pour la gestion d’infrastructures sécurisées.",
+      "cyberTitle": "Cybersécurité",
+      "cyberText": "Pratique avec IDS/IPS, Wazuh et TryHackMe. Préparation à la certification Security+.",
+      "cloudTitle": "Cloud & IA",
+      "cloudText": "Développement de compétences sur Azure et AWS. Exploration de l’IA pour l’automatisation, l’analyse des journaux et l’assistance au pentesting."
+    },
+    "featuredProjects": {
+      "title": "Projets en vedette",
+      "hybridTitle": "Hybrid Network Lab",
+      "hybridText": "Infrastructure hybride simulée avec supervision, tableaux de bord et transactions sécurisées.",
+      "coreventraTitle": "Coreventra Framework",
+      "coreventraText": "Backbone pour des économies numériques sécurisées et des simulations de type métavers.",
+      "domoticTitle": "Domotic Project",
+      "domoticText": "Hub domotique DIY sécurisé, conçu pour la confidentialité, la résilience et le contrôle local.",
+      "btnGithub": "Voir sur GitHub"
+    },
+    "about": {
+      "title": "À propos de moi",
+      "subtitle": "Technicien Cybersécurité & Cloud (en formation)",
+      "text": "Bonjour ! Je suis Jerome Henry, en reconversion professionnelle spécialisé en Systèmes, Réseaux, Cybersécurité et Cloud. J’effectue actuellement une formation de Technicien Systèmes & Réseaux tout en développant des projets personnels comme le Hybrid Network Lab, Coreventra et le Projet Domotique. Mon objectif est de devenir Technicien Cybersécurité & Cloud."
+    },
+    "skills": {
+      "title": "Compétences",
+      "systemsTitle": "Systèmes & Réseaux",
+      "systemsText": "Windows, Linux, Active Directory et pfSense pour la gestion d’infrastructures sécurisées.",
+      "cyberTitle": "Cybersécurité",
+      "cyberText": "Pratique avec IDS/IPS, Wazuh et TryHackMe. Préparation à la certification Security+.",
+      "cloudTitle": "Cloud & IA",
+      "cloudText": "Développement de compétences sur Azure et AWS. Exploration de l’IA pour l’automatisation, l’analyse des logs et l’assistance au pentesting."
+    },
+    "certifications": {
+      "title": "Certifications & Formations",
+      "cs50": "CS50 Introduction to CS, Python, Web Programming, Cybersecurity",
+      "tssr": "Technicien Supérieur Systèmes et Réseaux",
+      "linux": "Linux Essentials LPI",
+      "azure": "Azure Fundamentals",
+      "aws": "AWS Cloud Practitioner",
+      "cka": "CKA Certified Kubernetes Administrator",
+      "security": "CompTIA Security+",
+      "pentest": "CompTIA PenTest+",
+      "ceh": "CEH Certified Ethical Hacker"
+    },
+    "projectsPage": {
+      "title": "Mes Projets",
+      "hybridTitle": "Laboratoire Réseau Hybride",
+      "hybridText": "Infrastructure hybride simulée avec supervision, tableaux de bord et transactions sécurisées.",
+      "coreventraTitle": "Cadre Coreventra",
+      "coreventraText": "Backbone pour des économies numériques sécurisées et des simulations de type métavers.",
+      "domoticTitle": "Projet Domotique",
+      "domoticText": "Hub domotique DIY sécurisé, conçu pour la confidentialité, la résilience et le contrôle local.",
+      "btnGithub": "Voir sur GitHub",
+      "badgeNetworking": "Réseau",
+      "badgeFramework": "Framework",
+      "badgeIoT": "IoT",
+      "statusOngoing": "En cours",
+      "statusInProgress": "En progression",
+      "statusPlanned": "Prévu"
+    },
+    "contact": {
+      "title": "Me Contacter",
+      "desc": "N’hésitez pas à me contacter pour des collaborations, des opportunités, ou simplement pour échanger.",
+      "name": "Nom",
+      "email": "Courriel",
+      "message": "Message",
+      "placeholderName": "Votre nom",
+      "placeholderEmail": "vous@exemple.com",
+      "placeholderMessage": "Votre message...",
+      "btnSend": "Envoyer le message"
+    },
+    "footer": {
+      "text": "© 2025 Conçu & codé par Jerome Henry"
+    }
+  }
+}

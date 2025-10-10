@@ -1,0 +1,43 @@
+.bg-light-dark {
+    background-color: #2c313c;
+}
+.py-7 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+}
+.navbar {
+    background-color: rgba(33, 37, 41, 0.75) !important;
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+}
+
+.navbar-brand {
+    color: #00f2ff;
+}
+
+.nav-link.active {
+    color: #00f2ff !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: #00f2ff;
+}
+
+#separator {
+    color: #cccccc;
+}
+#hero {
+    background-image: url("images/hero_bg.png");
+    background-size: cover;
+    background-position: center;
+}
+.card i {
+    color: #00f2ff;
+}
+.bg-dark::placeholder {
+    color: #888;
+}
+
+
+

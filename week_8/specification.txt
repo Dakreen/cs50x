@@ -1,0 +1,26 @@
+HTML Tags:
+1. <html> - Root element, includes the lang attribute for accessibility.
+2. <head> - Contains metadata, links to Bootstrap, CSS, and JavaScript.
+3. <body> - Holds all visible page content.
+4. <header> - Used for navigation and page branding.
+5. <footer> - Displays copyright and social icons (GitHub, LinkedIn, Email).
+6. <nav> - Contains navigation links for different sections of the homepage.
+7. <section> - Groups related content (About, Projects, Contact, Certifications).
+8. <form> - Collects user input for the contact section.
+9. <label> - Labels form fields (Name, Email, Message).
+10. <input>, <textarea>, <button> - Provide fields for user interaction and a submit button.
+
+CSS Properties:
+1. background-color - Used for dark and custom backgrounds (e.g., .bg-light-dark, .navbar).
+2. padding - Provides vertical spacing (e.g., .py-7).
+3. backdrop-filter - Applies a blur effect to the navbar background.
+4. color - Used to style text and icons (e.g., navbar brand, nav links, cards).
+5. background-image / background-size / background-position - Used to set and style the hero section background.
+6. font-weight - Emphasizes active navigation links.
+7. z-index - Ensures the navbar stays above other elements.
+8. ::placeholder (color) - Styles placeholder text for inputs on dark backgrounds.
+
+Bootstrap & JavaScript:
+Bootstrap was used for responsive grid layout, navbar, form styling, badges, and utility classes (e.g., text-light, bg-dark, row, col-md-8).
+JavaScript was used to implement a translation system that updates text and placeholders dynamically when switching languages,
+    and to manage the <html lang="..."> attribute and active link highlighting.
