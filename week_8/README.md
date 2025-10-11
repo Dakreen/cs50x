@@ -13,10 +13,10 @@ The homepage includes sections for **About**, **Projects**, **Certifications**, 
 1. When the page loads, translations are fetched from `translations.json`.
 2. Clicking a language button (`#en` or `#fr`) triggers:
    - Translation of all text nodes marked with `[data-lang]`.
-   - Update of placeholders in form inputs marked with `[data-placeholder]`.
+   - Update of placeholders in form inputs with `setAttribute()`.
    - Update of the `<html lang="...">` attribute for accessibility and SEO.
    - Visual highlight of the active language button using the `.active` class.
-3. The JavaScript resolves **nested JSON keys** (e.g., `nav.about`, `contact.phName`) safely using string splitting.
+3. The JavaScript resolves **nested JSON keys** (e.g., `nav.about`, `contact.name`) safely using string splitting.
 
 ---
 
