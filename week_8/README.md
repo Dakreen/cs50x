@@ -189,5 +189,5 @@ Example snippet:
 ---
 
 ## Author
-**Name:** Jerome Henry
-**Date:** October 2025
+- **Name:** Jerome Henry
+- **Date:** October 2025
