@@ -8,10 +8,10 @@ Each folder represents a week of the course:
 
 - Week 0 – Scratch
 - Week 1 – C
-- Week 2 – C Arrays
-- Week 3 – C Algorithms
-- Week 4 – C Memory
-- Week 5 – C Data Structures
+- Week 2 – Arrays
+- Week 3 – Algorithms
+- Week 4 – Memory
+- Week 5 – Data Structures
 - Week 6 – Python
 - Week 7 – SQL
 - Week 8 – HTML, CSS, Javascript
