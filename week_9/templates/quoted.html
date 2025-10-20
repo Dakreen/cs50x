@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h2 class="mb-4 fw-bold">Stock Quote Result</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card bg-light shadow-sm rounded-3 text-center">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3 text-primary">{{quotes.name}}</h4>
+                        <h5 class="text-secondary mb-2">{{quotes.symbol}}</h5>
+                        <hr class="my-3">
+                        <p class="fs-4 fw-bold text-success mb-4">
+                            {{quotes.price}}
+                        </p>
+                        <a href="/quote" class="btn btn-outline-info w-100 fw-semibold">
+                            Search Another Stock
+                        </a>
+                    </div>
+                </div>
+                <div class="text-muted text-center mt-3 small">
+                    📊 Data provided by CS50 Finance API.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

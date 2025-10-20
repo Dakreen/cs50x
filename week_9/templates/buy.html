@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h2 class="mb-4 fw-bold">Buy Stocks</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card bg-light shadow-sm rounded-3">
+                    <div class="card-body">
+                        <form action="/buy" method="post">
+                            <div class="mb-3 text-start">
+                                <label for="symbol" class="form-label fw-semibold">Stock Symbol</label>
+                                {% if symbol %}
+                                    <input type="text" class="form-control" id="symbol" name="symbol" autocomplete="off" value="{{symbol}}">
+                                {% else %}
+                                    <input type="text" class="form-control" id="symbol" name="symbol" placeholder="Enter stock symbol (e.g. AAPL)" autocomplete="off" required>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="shares" class="form-label fw-semibold">Number of Shares</label>
+                                <input type="number" class="form-control" id="shares" name="shares" placeholder="Enter quantity" min="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100 fw-semibold">Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-muted text-center mt-3 small">
+                    💡 Ensure you have enough balance before purchasing.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

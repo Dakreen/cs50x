@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h2 class="mb-4 fw-bold">Sell Stocks</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card bg-light shadow-sm rounded-3">
+                    <div class="card-body">
+                        <form action="/sell" method="post">
+                            <div class="mb-3 text-start">
+                                <label for="symbol" class="form-label fw-semibold">Select Stock</label>
+                                <select class="form-select" id="symbol" name="symbol" required>
+                                    {% if symbol %}
+                                        <option selected value="{{symbol}}">{{symbol}}</option>
+                                    {% else %}
+                                        <option disabled selected value="">Choose a stock</option>
+                                        {% for key in stock %}
+                                            <option value="{{key.symbol}}">{{key.symbol}}</option>
+                                        {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                            <div class="mb-3 text-start">
+                                <label for="shares" class="form-label fw-semibold">Number of Shares</label>
+                                <input type="number" class="form-control" id="shares" name="shares" placeholder="Enter quantity" min="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100 fw-semibold">Sell Now</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-muted text-center mt-3 small">
+                    💡 You can only sell stocks you currently own.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

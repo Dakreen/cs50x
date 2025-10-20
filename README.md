@@ -15,7 +15,8 @@ Each folder represents a week of the course:
 - Week 6 – Python
 - Week 7 – SQL
 - Week 8 – HTML, CSS, Javascript
-- Week 9+ – Coming soon...
+- Week 9 – Flask
+- Week 10+ – Coming soon...
 
 Each folder includes:
 

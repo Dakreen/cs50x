@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h2 class="mb-4 fw-bold">Get Stock Quote</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card bg-light shadow-sm rounded-3">
+                    <div class="card-body">
+                        <form action="/quote" method="post">
+                            <div class="mb-3 text-start">
+                                <label for="symbol" class="form-label fw-semibold">Stock Symbol</label>
+                                <input type="text" class="form-control" id="symbol" name="symbol" placeholder="Enter stock symbol (e.g. TSLA)" autocomplete="off" required>
+                            </div>
+                            <button type="submit" class="btn btn-info w-100 fw-semibold">Get Quote</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-muted text-center mt-3 small">
+                    💡 Enter a valid stock symbol to check its current market price.
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
