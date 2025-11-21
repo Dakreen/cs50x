@@ -4,8 +4,6 @@ This repository contains my personal solutions and reflections for Harvard’s C
 
 ## Contents
 
-Each folder represents a week of the course:
-
 - Week 0 – Scratch
 - Week 1 – C
 - Week 2 – Arrays
@@ -16,17 +14,6 @@ Each folder represents a week of the course:
 - Week 7 – SQL
 - Week 8 – HTML, CSS, Javascript
 - Week 9 – Flask
-- Week 10+ – Coming soon...
-
-Each folder includes:
-
-- Problem set solutions
-- A `README.md` with my personal notes and reflections
-
-## About Me
-
-I'm preparing a career change to become a **Cybersecurity Technician – Systems, Networks & Applications**.  
-CS50 is part of my technical foundation, helping me strengthen programming, problem-solving, and security skills.
 
 ## Academic Honesty
 
